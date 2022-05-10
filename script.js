@@ -13,7 +13,7 @@ document.querySelector('#crash').addEventListener("click", clickCrash)
 
 function clickKick (){
     audioKick.pause();
-    audioKick.volume = maxVol;
+    audioKick.volume = maxVol - 0.3;
     audioKick.currentTime = 0;
     audioKick.play();
 }
@@ -37,8 +37,33 @@ function clickHH_close (){
 }
 function clickCrash (){
     crash.pause();
-    crash.volume = 0.3;
+    crash.volume = maxVol - 0.3;
     crash.currentTime = 0;
     crash.play();
 }
 
+document.addEventListener('keydown', (event) => {
+    soundCheck(event.key)
+    console.log(event.key)
+})
+
+function soundCheck (inputKey){
+    switch (inputKey){
+        case ' ':
+            clickKick();
+            break;
+        case 'c':
+            clickSnare();
+            break;
+        case 'x':
+            clickHH_close();
+            break;
+        case 'z':
+            clickHH();
+            break;
+        case 'm':
+            clickCrash();
+            break;
+
+    }
+}

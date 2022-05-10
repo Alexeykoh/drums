@@ -5,8 +5,8 @@
   position: relative;
   //display: flex;
   //justify-content: center;
-  min-height: 800px;
-  min-width: 800px;
+  min-height: calc(90vh - 120px);
+  min-width: 90vw;
   img{
     user-select: none;
     &#kick{
@@ -69,54 +69,5 @@
 }
 
 
-//.main{
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//
-//  .drums{
-//    position: relative;
-//    display: flex;
-//    align-items: center;
-//    justify-content: center;
-//
-//    img{
-//      position: absolute;
-//      &#kick{
-//        width: 20%;
-//        top: 350px;
-//      }
-//      &#snare{
-//        width: 10%;
-//        top: 350px;
-//        left: 500px;
-//      }
-//      &#hh{
-//        width: 10%;
-//        top: 350px;
-//        left: 500px;
-//      }
-//      &#crash{
-//        width: 10%;
-//        top: 350px;
-//        right: 300px;
-//      }
-//      &#tom-1{
-//        width: 10%;
-//        top: 300px;
-//        right: 400px;
-//      }
-//      &#tom-2{
-//        width: 10%;
-//        top: 300px;
-//        right: 470px;
-//      }
-//      &#floor-tom{
-//        width: 10%;
-//        top: 280px;
-//        right: 60px;
-//      }
-//    }
-//  }
-//}
+
 
