@@ -37,7 +37,7 @@ function clickHH_close (){
 }
 function clickCrash (){
     crash.pause();
-    crash.volume = maxVol;
+    crash.volume = 0.3;
     crash.currentTime = 0;
     crash.play();
 }
