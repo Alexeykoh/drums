@@ -5,7 +5,7 @@
     "default_volume": "1",
     "type": "master",
     "key": "none",
-    "enable": false
+    "enable": true
   },
   {
     "name": "kick",
@@ -45,31 +45,31 @@
     "default_volume": "0.7",
     "type": "fader",
     "key": "m",
-    "enable": false
+    "enable": true
   },
   {
-    "name": "up tom",
-    "src": "",
+    "name": "tom-up",
+    "src": "assets/audio/HighTom.wav",
     "default_volume": "0.9",
     "type": "fader",
     "key": "a",
-    "enable": false
+    "enable": true
   },
   {
-    "name": "mid tom",
-    "src": "",
-    "default_volume": "0.8",
+    "name": "tom-mid",
+    "src": "assets/audio/MediumTom.wav",
+    "default_volume": "0.7",
     "type": "fader",
     "key": "s",
-    "enable": false
+    "enable": true
   },
   {
-    "name": "low tom",
-    "src": "",
+    "name": "tom-floor",
+    "src": "assets/audio/LowTom.wav",
     "default_volume": "0.75",
     "type": "fader",
     "key": "d",
-    "enable": false
+    "enable": true
   }
 
 ]

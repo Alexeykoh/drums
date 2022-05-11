@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
 *{
   margin: 0;
   padding: 0;
+  font-family: 'Koulen', cursive;
 }
 .container {
   user-select: none;
@@ -17,9 +20,13 @@ $mixer-height: 275px;
 .main{
   width: 100%;
   height: 100vh;
-  background-image: url("/assets/img/Cloudy.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+
+  //background-image: url("assets/img/Cloudy.svg");
+  //background-repeat: no-repeat;
+  //background-size: cover;
+
 }
 .drum__area{
 
@@ -46,13 +53,38 @@ $mixer-height: 275px;
       }
       &#snare{
         width: 30%;
-        left: 13%;
+        left: 9%;
         top: 285px;
       }
       &#hh-close{
         width: 36%;
-        left: -7%;
+        left: -12%;
         top: 195px;
+      }
+      &#hh{
+        width: 30%;
+        left: -37%;
+        top: 259px;
+      }
+      &#tom-up{
+        width: 24%;
+        left: 25%;
+        top: 174px;
+      }
+      &#tom-mid{
+        width: 24%;
+        left: 55%;
+        top: 174px;
+      }
+      &#tom-floor{
+        width: 36%;
+        left: 70%;
+        top: 302px;
+      }
+      &#crash{
+        width: 50%;
+        left: 90%;
+        top: 170px;
       }
     }
   }
@@ -70,7 +102,7 @@ $mixer-height: 275px;
 
  input{
    -webkit-appearance: slider-vertical; /* Chromium */
-   height: 130px;
+   height: 100px;
    width: 30px;
    background-color: aqua;
    color: black;
@@ -87,6 +119,7 @@ $mixer-height: 275px;
   position: relative;
 }
 .mixer{
+  z-index: 1000;
   position: absolute;
   left: 0;
   top: calc(100vh - 300px);
@@ -95,7 +128,7 @@ $mixer-height: 275px;
   padding: 5px;
   //border-radius: 10px;
   //border: solid 3px;
-  gap: 3px;
+  gap: 10px;
   max-height: $mixer-height;
 }
 #master__fader{
@@ -104,7 +137,13 @@ $mixer-height: 275px;
 }
 
 .fader{
-  box-shadow: 10px 13px 3px #3c354a;
+  padding-top: 10px;
+  &:hover{
+    box-shadow: 10px 13px 3px #3c354a;
+    transform: scale(1.05) translateZ(0);
+
+  }
+  box-shadow: 7px 9px 1px #3c354a;
   font-size: 12px;
   border-radius: 15px;
   //border: solid 1px;
@@ -139,5 +178,9 @@ $mixer-height: 275px;
 }
 
 .dr:active{
+  transform: scale(1.05) translateZ(0);
+}
+
+.dr.active{
   transform: scale(1.05) translateZ(0);
 }

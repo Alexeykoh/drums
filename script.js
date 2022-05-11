@@ -1,6 +1,6 @@
-let masterVol = 1;
+let masterVol = 0;
 let jsonData;
-let mixerFader = [];
+let vol = 1;
 
 const fetchURL = 'channels.json'
 
@@ -11,7 +11,7 @@ fetch(fetchURL)
     .then(data => jsonData = data)
     .then(function rec(key){
         const faderParent = document.querySelector('.mixer');
-        const faderInnerParent = document.querySelector('.master.fader');
+        // const faderInnerParent = document.querySelector('.master.fader');
         for (let i = 0; i < key.length ; i++) {
             if (key[i].enable){
                 // console.log(key[i].enable, key[i].name)
@@ -45,7 +45,7 @@ fetch(fetchURL)
                 const inputRange = document.createElement("input");
                 inputRange.setAttribute('orient',"vertical");
                 inputRange.setAttribute('type',"range");
-                inputRange.setAttribute('min',"0.1");
+                inputRange.setAttribute('min',"0");
                 inputRange.setAttribute('max',"1");
                 inputRange.setAttribute('step',"0.01");
                 inputRange.setAttribute('value',`${key[i].default_volume}`);
@@ -76,6 +76,12 @@ fetch(fetchURL)
 
 function drVol(thisIn){
     document.getElementById(`vol-${thisIn.id}`).innerHTML = thisIn.value;
+    // console.log(thisIn.value, thisIn.id)
+    if (thisIn.id === 'fader-master'){
+        // console.log(thisIn.id )
+        masterVol = (1-thisIn.value).toFixed(2)
+        document.title = `LiDrums (mstr:${thisIn.value})`;
+    }
 }
 
 
@@ -86,6 +92,9 @@ document.querySelectorAll('.dr').forEach(function (elements){
         searchSound(this)
     }
 })
+
+
+
 function searchSound (input) {
     jsonData.forEach((data) => {
         let scrAudio;
@@ -97,7 +106,8 @@ function searchSound (input) {
 }
 
 document.addEventListener('keydown', (event) => {
-    let eventKey;
+    let eventKey = '';
+    console.log(event.key)
     switch (event.key){
         case ' ':
             eventKey = 'space';
@@ -110,6 +120,9 @@ document.addEventListener('keydown', (event) => {
         if (data.key === eventKey) {
             scrAudio = new Audio(`${data.src}`);
             playSound(scrAudio, data.name)
+            let drId = document.querySelector(`#${data.name}`).classList
+            drId.add('active')
+            setTimeout(() => drId.remove('active'), 50);
         }
     })
 })
@@ -119,15 +132,22 @@ document.addEventListener('keydown', (event) => {
 function playSound(sourceLink, sourceId){
     let channelVol = 0;
     // console.log(sourceId)
-    document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
-        // console.log(elements.value)
-        channelVol = elements.value;
+    jsonData.forEach((data) => {
+        if (data.name === sourceId && data.enable) {
+            document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
+                // console.log(elements.value)
+                channelVol = elements.value;
+            })
+            vol = (channelVol-masterVol.toString())
+            if(vol <= 0){vol = 0.01;}
+            // console.log(vol.toString(), channelVol, masterVol.toString())
+            sourceLink.pause();
+            sourceLink.volume = vol.toFixed(2);
+            sourceLink.currentTime = 0;
+            sourceLink.play();
+        }
     })
 
-    sourceLink.pause();
-    sourceLink.volume = channelVol;
-    sourceLink.currentTime = 0;
-    sourceLink.play();
 }
 
 function setVolume(sourceId) {
@@ -136,3 +156,5 @@ function setVolume(sourceId) {
         return elements.value;
     })
 }
+
+
