@@ -106,8 +106,8 @@ function searchSound (input) {
 }
 
 document.addEventListener('keydown', (event) => {
-    let eventKey;
-    // console.log(event.key)
+    let eventKey = '';
+    console.log(event.key)
     switch (event.key){
         case ' ':
             eventKey = 'space';
@@ -120,7 +120,6 @@ document.addEventListener('keydown', (event) => {
         if (data.key === eventKey) {
             scrAudio = new Audio(`${data.src}`);
             playSound(scrAudio, data.name)
-            console.log(data.name)
             let drId = document.querySelector(`#${data.name}`).classList
             drId.add('active')
             setTimeout(() => drId.remove('active'), 50);
@@ -133,17 +132,22 @@ document.addEventListener('keydown', (event) => {
 function playSound(sourceLink, sourceId){
     let channelVol = 0;
     // console.log(sourceId)
-    document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
-        // console.log(elements.value)
-        channelVol = elements.value;
+    jsonData.forEach((data) => {
+        if (data.name === sourceId && data.enable) {
+            document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
+                // console.log(elements.value)
+                channelVol = elements.value;
+            })
+            vol = (channelVol-masterVol.toString())
+            if(vol <= 0){vol = 0.01;}
+            // console.log(vol.toString(), channelVol, masterVol.toString())
+            sourceLink.pause();
+            sourceLink.volume = vol.toFixed(2);
+            sourceLink.currentTime = 0;
+            sourceLink.play();
+        }
     })
-    vol = (channelVol-masterVol.toString())
-    if(vol <= 0){vol = 0.01;}
-    // console.log(vol.toString(), channelVol, masterVol.toString())
-    sourceLink.pause();
-    sourceLink.volume = vol.toFixed(2);
-    sourceLink.currentTime = 0;
-    sourceLink.play();
+
 }
 
 function setVolume(sourceId) {
@@ -153,8 +157,4 @@ function setVolume(sourceId) {
     })
 }
 
-document.addEventListener('keydown', (event) => {
-    console.log(event.key)
-
-})
 
