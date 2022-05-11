@@ -97,7 +97,7 @@ function searchSound (input) {
 
 document.addEventListener('keydown', (event) => {
     let eventKey;
-    console.log(event.key)
+    // console.log(event.key)
     switch (event.key){
         case ' ':
             eventKey = 'space';
