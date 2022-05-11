@@ -1,6 +1,5 @@
 let masterVol = 1;
 let jsonData;
-let mixerFader = [];
 
 const fetchURL = 'channels.json'
 
@@ -11,7 +10,7 @@ fetch(fetchURL)
     .then(data => jsonData = data)
     .then(function rec(key){
         const faderParent = document.querySelector('.mixer');
-        const faderInnerParent = document.querySelector('.master.fader');
+        // const faderInnerParent = document.querySelector('.master.fader');
         for (let i = 0; i < key.length ; i++) {
             if (key[i].enable){
                 // console.log(key[i].enable, key[i].name)
@@ -45,7 +44,7 @@ fetch(fetchURL)
                 const inputRange = document.createElement("input");
                 inputRange.setAttribute('orient',"vertical");
                 inputRange.setAttribute('type',"range");
-                inputRange.setAttribute('min',"0.1");
+                inputRange.setAttribute('min',"0");
                 inputRange.setAttribute('max',"1");
                 inputRange.setAttribute('step',"0.01");
                 inputRange.setAttribute('value',`${key[i].default_volume}`);
@@ -98,6 +97,7 @@ function searchSound (input) {
 
 document.addEventListener('keydown', (event) => {
     let eventKey;
+    console.log(event.key)
     switch (event.key){
         case ' ':
             eventKey = 'space';
