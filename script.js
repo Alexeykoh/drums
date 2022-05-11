@@ -80,6 +80,7 @@ function drVol(thisIn){
     if (thisIn.id === 'fader-master'){
         // console.log(thisIn.id )
         masterVol = (1-thisIn.value).toFixed(2)
+        document.title = `LiDrums (mstr:${thisIn.value})`;
     }
 }
 
@@ -119,6 +120,10 @@ document.addEventListener('keydown', (event) => {
         if (data.key === eventKey) {
             scrAudio = new Audio(`${data.src}`);
             playSound(scrAudio, data.name)
+            console.log(data.name)
+            let drId = document.querySelector(`#${data.name}`).classList
+            drId.add('active')
+            setTimeout(() => drId.remove('active'), 50);
         }
     })
 })
@@ -147,3 +152,9 @@ function setVolume(sourceId) {
         return elements.value;
     })
 }
+
+document.addEventListener('keydown', (event) => {
+    console.log(event.key)
+
+})
+

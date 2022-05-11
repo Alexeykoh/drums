@@ -113,4 +113,8 @@ input {
   transform: scale(1.05) translateZ(0);
 }
 
+.dr.active {
+  transform: scale(1.05) translateZ(0);
+}
+
 /*# sourceMappingURL=style.css.map */
