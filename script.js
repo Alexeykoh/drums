@@ -1,5 +1,6 @@
-let masterVol = 1;
+let masterVol = 0;
 let jsonData;
+let vol = 1;
 
 const fetchURL = 'channels.json'
 
@@ -75,6 +76,11 @@ fetch(fetchURL)
 
 function drVol(thisIn){
     document.getElementById(`vol-${thisIn.id}`).innerHTML = thisIn.value;
+    // console.log(thisIn.value, thisIn.id)
+    if (thisIn.id === 'fader-master'){
+        // console.log(thisIn.id )
+        masterVol = (1-thisIn.value).toFixed(2)
+    }
 }
 
 
@@ -85,6 +91,9 @@ document.querySelectorAll('.dr').forEach(function (elements){
         searchSound(this)
     }
 })
+
+
+
 function searchSound (input) {
     jsonData.forEach((data) => {
         let scrAudio;
@@ -123,9 +132,11 @@ function playSound(sourceLink, sourceId){
         // console.log(elements.value)
         channelVol = elements.value;
     })
-
+    vol = (channelVol-masterVol.toString())
+    if(vol <= 0){vol = 0.01;}
+    // console.log(vol.toString(), channelVol, masterVol.toString())
     sourceLink.pause();
-    sourceLink.volume = channelVol;
+    sourceLink.volume = vol.toFixed(2);
     sourceLink.currentTime = 0;
     sourceLink.play();
 }

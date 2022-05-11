@@ -5,7 +5,7 @@
     "default_volume": "1",
     "type": "master",
     "key": "none",
-    "enable": false
+    "enable": true
   },
   {
     "name": "kick",
