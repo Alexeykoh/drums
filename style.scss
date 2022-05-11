@@ -1,73 +1,144 @@
-.container {
+*{
+  margin: 0;
+  padding: 0;
 }
-.drums{
+.container {
+  user-select: none;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+@mixin glassMorph{
+  background: linear-gradient(225deg, #cacaca, #f0f0f0);
+  box-shadow:  -20px 20px 60px #bebebe,
+  20px -20px 60px #ffffff;
+}
+$mixer-height: 275px;
+
+.main{
   width: 100%;
+  height: 100vh;
+  background-image: url("/assets/img/Cloudy.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.drum__area{
+
+}
+.drums {
+
+
   position: relative;
-  //display: flex;
-  //justify-content: center;
-  min-height: calc(90vh - 120px);
-  min-width: 90vw;
-  img{
-    user-select: none;
-    &#kick{
-      position: absolute;
-      width: 20%;
-      top:50%;
-      left:50%;
-      transform:translate(-50%);
-    }
-    &#snare{
-      position: absolute;
-      width: 10%;
-      top: 65%;
-      left:40%;
-      transform:translate(-50%);
-    }
-    &#hh{
-      position: absolute;
-      width: 13%;
-      top: 40%;
-      left: 31%;
-      transform:translate(-50%);
-    }
-    &#hh-close{
-      position: absolute;
-      width: 13%;
-      top: 48%;
-      left: 21%;
-      transform:translate(-50%);
-    }
-    &#crash{
-      position: absolute;
-      width: 19%;
-      top: 32%;
-      right: 13%;
-      transform:translate(-50%);
-    }
-    &#tom-1{
-      position: absolute;
-      width: 10%;
-      top: 44%;
-      right: 47%;
-      transform:translate(-50%);
-    }
-    &#tom-2{
-      position: absolute;
-      width: 10%;
-      top: 44%;
-      right: 35%;
-      transform:translate(-50%);
-    }
-    &#floor-tom{
-      position: absolute;
-      width: 13%;
-      top: 62%;
-      right: 25%;
-      transform:translate(-50%);
+  width: 100%;
+  height: 100%;
+  .drums__container{
+    width: 100%;
+    height: 100%;
+  }
+  .drums__container, .dr{
+    position: absolute;
+    width: 40%;
+    left: 25%;
+    img{
+      &#kick{
+        width: 60%;
+        left: 25%;
+        top: 200px;
+      }
+      &#snare{
+        width: 30%;
+        left: 13%;
+        top: 285px;
+      }
+      &#hh-close{
+        width: 36%;
+        left: -7%;
+        top: 195px;
+      }
     }
   }
 }
 
+//img{
+//  user-select: none;
+//  &#kick{
+//    width: 20%;
+//    top:50%;
+//    left:50%;
+//    transform:translate(-50%);
+//  }
+//}
+
+ input{
+   -webkit-appearance: slider-vertical; /* Chromium */
+   height: 130px;
+   width: 30px;
+   background-color: aqua;
+   color: black;
+ }
+
+//.drums {
+//  display: none;
+//}
 
 
 
+// =======================================
+//mixer style
+.instructions{
+  position: relative;
+}
+.mixer{
+  position: absolute;
+  left: 0;
+  top: calc(100vh - 300px);
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  //border-radius: 10px;
+  //border: solid 3px;
+  gap: 3px;
+  max-height: $mixer-height;
+}
+#master__fader{
+  width: 75px;
+  margin-right: 10px;
+}
+
+.fader{
+  box-shadow: 10px 13px 3px #3c354a;
+  font-size: 12px;
+  border-radius: 15px;
+  //border: solid 1px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 50px;
+  //height: 225px;
+  background-color: rgb(87, 83, 93);
+  color: black;
+  font-weight: bold;
+  .fader__name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    //background-color: #4B4453;
+    color: white;
+    border-color: black;
+    font-weight: bold;
+    height: 50px;
+  }
+  .fader__key{
+    padding-bottom: 5px;
+    color: white;
+  }
+}
+
+.dr:active{
+  transform: scale(1.05) translateZ(0);
+}
