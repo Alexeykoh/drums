@@ -1,69 +1,138 @@
-let audioKick = new Audio('assets/audio/Bass-Drum-1.wav');
-let audioSnare = new Audio('assets/audio/snare.wav');
-let audioHH = new Audio('assets/audio/opHat.wav');
-let audioHH_close = new Audio('assets/audio/clHat.wav');
-let crash = new Audio('assets/audio/allCrash.wav');
-let maxVol = 0.5;
+let masterVol = 1;
+let jsonData;
+let mixerFader = [];
 
-document.querySelector('#kick').addEventListener("click", clickKick)
-document.querySelector('#snare').addEventListener("click", clickSnare)
-document.querySelector('#hh').addEventListener("click", clickHH)
-document.querySelector('#hh-close').addEventListener("click", clickHH_close)
-document.querySelector('#crash').addEventListener("click", clickCrash)
+const fetchURL = 'channels.json'
 
-function clickKick (){
-    audioKick.pause();
-    audioKick.volume = maxVol - 0.3;
-    audioKick.currentTime = 0;
-    audioKick.play();
+fetch(fetchURL)
+    .then(resp => {
+        return resp.json();
+    })
+    .then(data => jsonData = data)
+    .then(function rec(key){
+        const faderParent = document.querySelector('.mixer');
+        const faderInnerParent = document.querySelector('.master.fader');
+        for (let i = 0; i < key.length ; i++) {
+            if (key[i].enable){
+                // console.log(key[i].enable, key[i].name)
+                //
+                // console.log(key[i].type)
+                const faderDiv = document.createElement("div");
+                switch (key[i].type){
+                    case 'master':
+                        faderDiv.classList.add(`master`);
+                        faderDiv.setAttribute('id','master__fader');
+                        break;
+                }
+                faderDiv.classList.add(`fader`);
+                faderParent.appendChild(faderDiv);
+                //
+                //
+                const faderVol = document.createElement("div");
+                faderVol.classList.add(`fader-vol`);
+                faderVol.setAttribute('id',`vol-fader-${key[i].name}`);
+                switch (key[i].type){
+                    case 'master':
+                        faderVol.classList.add(`master-vol`);
+                        break;
+                }
+                faderVol.innerHTML = `${key[i].default_volume}`
+                faderDiv.appendChild(faderVol);
+                //
+                const rangeDiv = document.createElement("div");
+                rangeDiv.classList.add(`fader__range`);
+                faderDiv.appendChild(rangeDiv);
+                const inputRange = document.createElement("input");
+                inputRange.setAttribute('orient',"vertical");
+                inputRange.setAttribute('type',"range");
+                inputRange.setAttribute('min',"0.1");
+                inputRange.setAttribute('max',"1");
+                inputRange.setAttribute('step',"0.01");
+                inputRange.setAttribute('value',`${key[i].default_volume}`);
+                inputRange.setAttribute('id',`fader-${key[i].name}`);
+                inputRange.setAttribute('oninput',`drVol(this)`);
+                faderDiv.appendChild(inputRange);
+                //
+                const nameDiv = document.createElement("div");
+                nameDiv.classList.add(`fader__name`);
+                nameDiv.innerHTML = key[i].name
+                faderDiv.appendChild(nameDiv);
+                //
+                const keyDiv = document.createElement("div");
+                keyDiv.classList.add(`fader__key`);
+                switch (key[i].type){
+                    case 'master':
+                        keyDiv.innerHTML = 'baza415'
+                        break;
+                    default:
+                        keyDiv.innerHTML = key[i].key
+                }
+                faderDiv.appendChild(keyDiv);
+            }
+        }
+    })
+
+
+
+function drVol(thisIn){
+    document.getElementById(`vol-${thisIn.id}`).innerHTML = thisIn.value;
 }
-function clickSnare (){
-    audioSnare.pause();
-    audioSnare.volume = maxVol;
-    audioSnare.currentTime = 0;
-    audioSnare.play();
-}
-function clickHH (){
-    audioHH.pause();
-    audioHH.volume = maxVol;
-    audioHH.currentTime = 0;
-    audioHH.play();
-}
-function clickHH_close (){
-    audioHH_close.pause();
-    audioHH_close.volume = maxVol;
-    audioHH_close.currentTime = 0;
-    audioHH_close.play();
-}
-function clickCrash (){
-    crash.pause();
-    crash.volume = maxVol - 0.3;
-    crash.currentTime = 0;
-    crash.play();
+
+
+// ====================================
+// search sound
+document.querySelectorAll('.dr').forEach(function (elements){
+    elements.onclick = function (event) {
+        searchSound(this)
+    }
+})
+function searchSound (input) {
+    jsonData.forEach((data) => {
+        let scrAudio;
+        if (data.name === input.id) {
+            scrAudio = new Audio(`${data.src}`);
+            playSound(scrAudio, data.name)
+        }
+    })
 }
 
 document.addEventListener('keydown', (event) => {
-    soundCheck(event.key)
-    console.log(event.key)
+    let eventKey;
+    switch (event.key){
+        case ' ':
+            eventKey = 'space';
+            break
+        default:
+            eventKey = event.key;
+    }
+    jsonData.forEach((data) => {
+        let scrAudio;
+        if (data.key === eventKey) {
+            scrAudio = new Audio(`${data.src}`);
+            playSound(scrAudio, data.name)
+        }
+    })
 })
 
-function soundCheck (inputKey){
-    switch (inputKey){
-        case ' ':
-            clickKick();
-            break;
-        case 'c':
-            clickSnare();
-            break;
-        case 'x':
-            clickHH_close();
-            break;
-        case 'z':
-            clickHH();
-            break;
-        case 'm':
-            clickCrash();
-            break;
+// ====================================
+// play sound
+function playSound(sourceLink, sourceId){
+    let channelVol = 0;
+    // console.log(sourceId)
+    document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
+        // console.log(elements.value)
+        channelVol = elements.value;
+    })
 
-    }
+    sourceLink.pause();
+    sourceLink.volume = channelVol;
+    sourceLink.currentTime = 0;
+    sourceLink.play();
+}
+
+function setVolume(sourceId) {
+    document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
+        console.log(elements.value)
+        return elements.value;
+    })
 }

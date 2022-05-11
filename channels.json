@@ -1,0 +1,75 @@
+[
+  {
+    "name": "master",
+    "src": "",
+    "default_volume": "1",
+    "type": "master",
+    "key": "none",
+    "enable": true
+  },
+  {
+    "name": "kick",
+    "src": "assets/audio/Bass-Drum-1.wav",
+    "default_volume": "0.7",
+    "type": "fader",
+    "key": "space",
+    "enable": true
+  },
+  {
+    "name": "snare",
+    "src": "assets/audio/snare.wav",
+    "default_volume": "1",
+    "type": "fader",
+    "key": "c",
+    "enable": true
+  },
+  {
+    "name": "hh-open",
+    "src": "assets/audio/opHat.wav",
+    "default_volume": "0.9",
+    "type": "fader",
+    "key": "z",
+    "enable": true
+  },
+  {
+    "name": "hh-close",
+    "src": "assets/audio/clHat.wav",
+    "default_volume": "1",
+    "type": "fader",
+    "key": "x",
+    "enable": true
+  },
+  {
+    "name": "crash",
+    "src": "assets/audio/allCrash.wav",
+    "default_volume": "0.7",
+    "type": "fader",
+    "key": "m",
+    "enable": false
+  },
+  {
+    "name": "up tom",
+    "src": "",
+    "default_volume": "0.9",
+    "type": "fader",
+    "key": "a",
+    "enable": false
+  },
+  {
+    "name": "mid tom",
+    "src": "",
+    "default_volume": "0.8",
+    "type": "fader",
+    "key": "s",
+    "enable": false
+  },
+  {
+    "name": "low tom",
+    "src": "",
+    "default_volume": "0.75",
+    "type": "fader",
+    "key": "d",
+    "enable": false
+  }
+
+]
