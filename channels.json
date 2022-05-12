@@ -42,7 +42,7 @@
   {
     "name": "crash",
     "src": "assets/audio/allCrash.wav",
-    "default_volume": "0.7",
+    "default_volume": "0.4",
     "type": "fader",
     "key": "m",
     "enable": true
