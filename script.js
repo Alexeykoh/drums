@@ -107,13 +107,13 @@ function searchSound (input) {
 
 document.addEventListener('keydown', (event) => {
     let eventKey = '';
-    console.log(event.key)
+    console.log(event.code)
     switch (event.key){
         case ' ':
             eventKey = 'space';
             break
         default:
-            eventKey = event.key;
+            eventKey = event.code;
     }
     jsonData.forEach((data) => {
         let scrAudio;
@@ -122,7 +122,9 @@ document.addEventListener('keydown', (event) => {
             playSound(scrAudio, data.name)
             let drId = document.querySelector(`#${data.name}`).classList
             drId.add('active')
-            setTimeout(() => drId.remove('active'), 50);
+            setTimeout(() => {
+                drId.remove('active');
+            }, 50);
         }
     })
 })
