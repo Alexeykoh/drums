@@ -2,6 +2,19 @@ let masterVol = 0;
 let jsonData;
 let vol = 1;
 
+// memo
+const memo = (fn) => {
+    const cache = {};
+
+    return (n) => {
+        if(n in cache){
+            return cache[n];
+        }
+        return cache[n] = fn(n);
+    };
+};
+
+
 const fetchURL = 'channels.json'
 
 fetch(fetchURL)
@@ -95,7 +108,6 @@ document.querySelectorAll('.dr').forEach(function (elements){
 })
 
 
-
 function searchSound (input) {
     jsonData.forEach((data) => {
         let scrAudio;
@@ -105,6 +117,8 @@ function searchSound (input) {
         }
     })
 }
+
+
 
 document.addEventListener('keydown', (event) => {
     let eventKey = '';
@@ -132,9 +146,12 @@ document.addEventListener('keydown', (event) => {
     })
 })
 
+
+
 // ====================================
 // play sound
 function playSound(sourceLink, sourceId){
+
     let channelVol = 0;
     // console.log(sourceId)
     jsonData.forEach((data) => {
@@ -145,15 +162,20 @@ function playSound(sourceLink, sourceId){
             })
             vol = (channelVol-masterVol.toString())
             if(vol <= 0){vol = 0.01;}
-            // console.log(vol.toString(), channelVol, masterVol.toString())
-            sourceLink.pause();
-            sourceLink.volume = vol.toFixed(2);
-            sourceLink.currentTime = 0;
-            sourceLink.play();
+            play(sourceLink, vol);
         }
     })
-
 }
+
+// ====================================
+// play
+function play (sourceLink, vol){
+    sourceLink.pause();
+    sourceLink.volume = vol.toFixed(2);
+    sourceLink.currentTime = 0;
+    sourceLink.play();
+}
+
 
 function setVolume(sourceId) {
     document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
@@ -162,3 +184,14 @@ function setVolume(sourceId) {
     })
 }
 
+
+//
+// const factorial = memo((x) => {
+//     console.log('calc = '+x);
+//     return (!x || x === 1) ?
+//         1 : x * factorial(x - 1);
+//     }
+// )
+//
+// console.log(factorial(5))
+// console.log(factorial(5))
