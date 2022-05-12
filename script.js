@@ -76,7 +76,7 @@ fetch(fetchURL)
                 keyDiv.classList.add(`fader__key`);
                 switch (key[i].type){
                     case 'master':
-                        keyDiv.innerHTML = 'mstr'
+                        keyDiv.innerHTML = 'master'
                         break;
                     default:
                         keyDiv.innerHTML = key[i].keyText
@@ -157,7 +157,6 @@ function playSound(sourceLink, sourceId){
     jsonData.forEach((data) => {
         if (data.name === sourceId && data.enable) {
             document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
-                // console.log(elements.value)
                 channelVol = elements.value;
             })
             vol = (channelVol-masterVol.toString())
@@ -170,6 +169,7 @@ function playSound(sourceLink, sourceId){
 // ====================================
 // play
 function play (sourceLink, vol){
+    sourceLink.preload;
     sourceLink.pause();
     sourceLink.volume = vol.toFixed(2);
     sourceLink.currentTime = 0;
