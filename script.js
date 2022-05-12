@@ -62,7 +62,7 @@ fetch(fetchURL)
                 keyDiv.classList.add(`fader__key`);
                 switch (key[i].type){
                     case 'master':
-                        keyDiv.innerHTML = 'baza415'
+                        keyDiv.innerHTML = 'mstr'
                         break;
                     default:
                         keyDiv.innerHTML = key[i].key
