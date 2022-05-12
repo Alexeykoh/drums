@@ -5,6 +5,7 @@
     "default_volume": "1",
     "type": "master",
     "key": "none",
+    "keyText": "none",
     "enable": true
   },
   {
@@ -13,6 +14,7 @@
     "default_volume": "0.7",
     "type": "fader",
     "key": "space",
+    "keyText": "space",
     "enable": true
   },
   {
@@ -21,6 +23,7 @@
     "default_volume": "1",
     "type": "fader",
     "key": "KeyC",
+    "keyText": "C",
     "enable": true
   },
   {
@@ -29,6 +32,7 @@
     "default_volume": "0.9",
     "type": "fader",
     "key": "KeyZ",
+    "keyText": "Z",
     "enable": true
   },
   {
@@ -37,6 +41,7 @@
     "default_volume": "1",
     "type": "fader",
     "key": "KeyX",
+    "keyText": "X",
     "enable": true
   },
   {
@@ -45,6 +50,7 @@
     "default_volume": "0.3",
     "type": "fader",
     "key": "KeyM",
+    "keyText": "M",
     "enable": true
   },
   {
@@ -53,6 +59,7 @@
     "default_volume": "0.9",
     "type": "fader",
     "key": "KeyA",
+    "keyText": "A",
     "enable": true
   },
   {
@@ -61,6 +68,7 @@
     "default_volume": "0.7",
     "type": "fader",
     "key": "KeyS",
+    "keyText": "S",
     "enable": true
   },
   {
@@ -69,6 +77,7 @@
     "default_volume": "0.75",
     "type": "fader",
     "key": "KeyD",
+    "keyText": "D",
     "enable": true
   }
 

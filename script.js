@@ -25,6 +25,7 @@ fetch(fetchURL)
                         break;
                 }
                 faderDiv.classList.add(`fader`);
+                faderDiv.setAttribute('id',`faderID-${key[i].key}`);
                 faderParent.appendChild(faderDiv);
                 //
                 //
@@ -65,7 +66,7 @@ fetch(fetchURL)
                         keyDiv.innerHTML = 'mstr'
                         break;
                     default:
-                        keyDiv.innerHTML = key[i].key
+                        keyDiv.innerHTML = key[i].keyText
                 }
                 faderDiv.appendChild(keyDiv);
             }
@@ -117,7 +118,9 @@ document.addEventListener('keydown', (event) => {
     }
     jsonData.forEach((data) => {
         let scrAudio;
+
         if (data.key === eventKey) {
+            console.log(data.name, data.key, data.key === eventKey)
             scrAudio = new Audio(`${data.src}`);
             playSound(scrAudio, data.name)
             let drId = document.querySelector(`#${data.name}`).classList
@@ -158,5 +161,4 @@ function setVolume(sourceId) {
         return elements.value;
     })
 }
-
 

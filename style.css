@@ -59,7 +59,7 @@
   left: -12%;
   bottom: 10%;
 }
-.drums .drums__container img#hh, .drums .dr img#hh {
+.drums .drums__container img#hh-open, .drums .dr img#hh-open {
   width: 30%;
   left: -37%;
   bottom: 5%;
@@ -100,7 +100,7 @@ input {
   z-index: 1000;
   position: absolute;
   left: 0;
-  top: 65px;
+  top: calc(100vh - 75%);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -118,7 +118,7 @@ input {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 25px;
+  height: 40px;
   background-color: rgb(87, 83, 93);
   color: black;
   font-weight: bold;
@@ -150,6 +150,10 @@ input {
   justify-content: center;
   width: 25px;
   padding-right: 10px;
+  color: white;
+}
+.fader .fader-vol:hover {
+  color: #C34A36;
 }
 
 .dr:active {
