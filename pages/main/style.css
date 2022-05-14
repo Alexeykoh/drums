@@ -331,4 +331,10 @@
   font-size: 1.5rem;
 }
 
+button {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+}
+
 /*# sourceMappingURL=style.css.map */
