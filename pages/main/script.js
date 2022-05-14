@@ -19,3 +19,18 @@ for (let anchor of anchors){
         })
     })
 }
+
+//====================================
+var soundID = "Thunder";
+
+loadSound();
+function loadSound () {
+    createjs.Sound.registerSound("snare.wav", soundID);
+}
+
+function playSound () {
+    createjs.Sound.play(soundID);
+}
+
+
+

@@ -79,10 +79,10 @@ setTimeout(() => {
     jsonData.forEach(function (inpuht){
         // console.log(inpuht.src)
 
-        inpuht.src !== '' ? soundData.push(new Audio(`${inpuht.src}`)) : false;
+        inpuht.src !== '' ? soundData.push(new Audio(`${inpuht.src}` )) : false;
     } )
 
-    // console.log(soundData[1])
+    console.log(soundData[2])
     }, 300)
 
 
@@ -91,3 +91,5 @@ document.getElementById('snare').addEventListener('mousedown', function (event) 
     keks.currentTime = 0;
     keks.play()
 })
+
+
