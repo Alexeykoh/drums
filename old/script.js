@@ -1,5 +1,6 @@
 let masterVol = 0;
 let jsonData;
+let soundData = [];
 let vol = 1;
 
 // memo
@@ -13,6 +14,35 @@ const memo = (fn) => {
         return cache[n] = fn(n);
     };
 };
+
+// sound data
+setTimeout(() => {
+
+    jsonData.forEach(function (inpuht){
+        console.log(inpuht.src)
+        soundData.push(new Audio(`${inpuht.src}`))
+    } )
+
+    console.log(soundData)
+
+    setTimeout(() => {
+        soundData.autoplay = true;
+        console.log(soundData[1])
+        soundData[1].volume = 0.3;
+        soundData[1].play()
+
+        // soundData.forEach((inp)=>{
+        //     // inp.volume = 0.3;
+        //     // inp.pause();
+        //     // inp.currentTime = 0;
+        //     // inp.play();
+        //     console.log(inp)
+        // })
+    }, 300)
+
+
+
+}, 300);
 
 
 const fetchURL = 'channels.json'
@@ -195,3 +225,5 @@ function setVolume(sourceId) {
 //
 // console.log(factorial(5))
 // console.log(factorial(5))
+
+

@@ -1,0 +1,83 @@
+[
+  {
+    "name": "master",
+    "src": "",
+    "default_volume": "1",
+    "type": "master",
+    "key": "none",
+    "keyText": "none",
+    "enable": true
+  },
+  {
+    "name": "kick",
+    "src": "../../assets/audio/Bass-Drum-1.wav",
+    "default_volume": "0.7",
+    "type": "fader",
+    "key": "space",
+    "keyText": "space",
+    "enable": true
+  },
+  {
+    "name": "snare",
+    "src": "../../assets/audio/snare.wav",
+    "default_volume": "1",
+    "type": "fader",
+    "key": "KeyC",
+    "keyText": "C",
+    "enable": true
+  },
+  {
+    "name": "hh-open",
+    "src": "../../assets/audio/opHat.wav",
+    "default_volume": "0.9",
+    "type": "fader",
+    "key": "KeyZ",
+    "keyText": "Z",
+    "enable": true
+  },
+  {
+    "name": "hh-close",
+    "src": "../../assets/audio/clHat.wav",
+    "default_volume": "1",
+    "type": "fader",
+    "key": "KeyX",
+    "keyText": "X",
+    "enable": true
+  },
+  {
+    "name": "crash",
+    "src": "../../assets/audio/allCrash.wav",
+    "default_volume": "0.3",
+    "type": "fader",
+    "key": "KeyM",
+    "keyText": "M",
+    "enable": true
+  },
+  {
+    "name": "tom-up",
+    "src": "../../assets/audio/HighTom.wav",
+    "default_volume": "0.9",
+    "type": "fader",
+    "key": "KeyA",
+    "keyText": "A",
+    "enable": true
+  },
+  {
+    "name": "tom-mid",
+    "src": "../../assets/audio/MediumTom.wav",
+    "default_volume": "0.7",
+    "type": "fader",
+    "key": "KeyS",
+    "keyText": "S",
+    "enable": true
+  },
+  {
+    "name": "tom-floor",
+    "src": "../../assets/audio/LowTom.wav",
+    "default_volume": "0.75",
+    "type": "fader",
+    "key": "KeyD",
+    "keyText": "D",
+    "enable": true
+  }
+]
