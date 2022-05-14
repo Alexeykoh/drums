@@ -1,3 +1,5 @@
+"use strict"
+
 let jsonData = [];
 let soundData = [];
 
@@ -75,21 +77,32 @@ function drVol(thisIn){
 
 // loading sounds
 setTimeout(() => {
-
     jsonData.forEach(function (inpuht){
-        // console.log(inpuht.src)
-
-        inpuht.src !== '' ? soundData.push(new Audio(`${inpuht.src}` )) : false;
+        //
+        // inpuht.src !== '' ? soundData.push(new Audio(`${inpuht.src}` )) : false;
+        //
+        if (inpuht.src !== ''){
+            let kekea = inpuht.name
+            let keka = `../../assets/audio/${kekea}.wav`;
+            // console.log(keka === inpuht.src, inpuht.name)
+            createjs.Sound.registerSound(keka, `play-${inpuht.name}`);
+        }
     } )
 
-    console.log(soundData[2])
     }, 300)
 
 
-document.getElementById('snare').addEventListener('mousedown', function (event) {
-    let keks = document.getElementById('kek')
-    keks.currentTime = 0;
-    keks.play()
+document.querySelectorAll('.dr').forEach(function (elements){
+    elements.onclick = function (event) {
+        jsonData.forEach((data) => {
+            if (data.name === this.id) {
+                createjs.Sound.on("fileload", handleLoadComplete);
+                createjs.Sound.play(`play-${this.id}`);
+            }
+        })
+    }
 })
 
-
+function handleLoadComplete() {
+    console.log('load complete')
+}

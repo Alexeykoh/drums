@@ -19,6 +19,7 @@
 // === === === === === === === === === === === === === === //
 // wrappers
 .header__wrapper{
+  user-select: none;
   //
   z-index: 1000;
   //
@@ -116,6 +117,8 @@
 .main__wrapper{
   //
   .workstation__area{
+    user-select: none;
+    //
     height: calc(100vh - 74px);
     //
     background-color: #cacaca;
@@ -222,6 +225,8 @@
     //
     // DRUMS
     .drums__block{
+      user-select: none;
+      //
       .drums-logo{
         position: absolute;
         //
