@@ -1,6 +1,49 @@
 let masterVol = 0;
 let jsonData;
+let soundData = [];
 let vol = 1;
+
+// memo
+const memo = (fn) => {
+    const cache = {};
+
+    return (n) => {
+        if(n in cache){
+            return cache[n];
+        }
+        return cache[n] = fn(n);
+    };
+};
+
+// sound data
+setTimeout(() => {
+
+    jsonData.forEach(function (inpuht){
+        console.log(inpuht.src)
+        soundData.push(new Audio(`${inpuht.src}`))
+    } )
+
+    console.log(soundData)
+
+    setTimeout(() => {
+        soundData.autoplay = true;
+        console.log(soundData[1])
+        soundData[1].volume = 0.3;
+        soundData[1].play()
+
+        // soundData.forEach((inp)=>{
+        //     // inp.volume = 0.3;
+        //     // inp.pause();
+        //     // inp.currentTime = 0;
+        //     // inp.play();
+        //     console.log(inp)
+        // })
+    }, 300)
+
+
+
+}, 300);
+
 
 const fetchURL = 'channels.json'
 
@@ -25,6 +68,7 @@ fetch(fetchURL)
                         break;
                 }
                 faderDiv.classList.add(`fader`);
+                faderDiv.setAttribute('id',`faderID-${key[i].key}`);
                 faderParent.appendChild(faderDiv);
                 //
                 //
@@ -62,10 +106,10 @@ fetch(fetchURL)
                 keyDiv.classList.add(`fader__key`);
                 switch (key[i].type){
                     case 'master':
-                        keyDiv.innerHTML = 'mstr'
+                        keyDiv.innerHTML = 'master'
                         break;
                     default:
-                        keyDiv.innerHTML = key[i].key
+                        keyDiv.innerHTML = key[i].keyText
                 }
                 faderDiv.appendChild(keyDiv);
             }
@@ -94,7 +138,6 @@ document.querySelectorAll('.dr').forEach(function (elements){
 })
 
 
-
 function searchSound (input) {
     jsonData.forEach((data) => {
         let scrAudio;
@@ -105,50 +148,64 @@ function searchSound (input) {
     })
 }
 
+
+
 document.addEventListener('keydown', (event) => {
     let eventKey = '';
-    console.log(event.key)
+    console.log(event.code)
     switch (event.key){
         case ' ':
             eventKey = 'space';
             break
         default:
-            eventKey = event.key;
+            eventKey = event.code;
     }
     jsonData.forEach((data) => {
         let scrAudio;
+
         if (data.key === eventKey) {
+            console.log(data.name, data.key, data.key === eventKey)
             scrAudio = new Audio(`${data.src}`);
             playSound(scrAudio, data.name)
             let drId = document.querySelector(`#${data.name}`).classList
             drId.add('active')
-            setTimeout(() => drId.remove('active'), 50);
+            setTimeout(() => {
+                drId.remove('active');
+            }, 50);
         }
     })
 })
 
+
+
 // ====================================
 // play sound
 function playSound(sourceLink, sourceId){
+
     let channelVol = 0;
     // console.log(sourceId)
     jsonData.forEach((data) => {
         if (data.name === sourceId && data.enable) {
             document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
-                // console.log(elements.value)
                 channelVol = elements.value;
             })
             vol = (channelVol-masterVol.toString())
             if(vol <= 0){vol = 0.01;}
-            // console.log(vol.toString(), channelVol, masterVol.toString())
-            sourceLink.pause();
-            sourceLink.volume = vol.toFixed(2);
-            sourceLink.currentTime = 0;
-            sourceLink.play();
+            play(sourceLink, vol);
         }
     })
-
 }
+
+// ====================================
+// play
+function play (sourceLink, vol){
+    sourceLink.preload;
+    sourceLink.pause();
+    sourceLink.volume = vol.toFixed(2);
+    sourceLink.currentTime = 0;
+    sourceLink.play();
+}
+
 
 function setVolume(sourceId) {
     document.querySelectorAll(`#fader-${sourceId}`).forEach(function (elements){
@@ -156,5 +213,17 @@ function setVolume(sourceId) {
         return elements.value;
     })
 }
+
+
+//
+// const factorial = memo((x) => {
+//     console.log('calc = '+x);
+//     return (!x || x === 1) ?
+//         1 : x * factorial(x - 1);
+//     }
+// )
+//
+// console.log(factorial(5))
+// console.log(factorial(5))
 
 

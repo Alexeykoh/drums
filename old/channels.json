@@ -5,6 +5,7 @@
     "default_volume": "1",
     "type": "master",
     "key": "none",
+    "keyText": "none",
     "enable": true
   },
   {
@@ -13,6 +14,7 @@
     "default_volume": "0.7",
     "type": "fader",
     "key": "space",
+    "keyText": "space",
     "enable": true
   },
   {
@@ -20,7 +22,8 @@
     "src": "assets/audio/snare.wav",
     "default_volume": "1",
     "type": "fader",
-    "key": "c",
+    "key": "KeyC",
+    "keyText": "C",
     "enable": true
   },
   {
@@ -28,7 +31,8 @@
     "src": "assets/audio/opHat.wav",
     "default_volume": "0.9",
     "type": "fader",
-    "key": "z",
+    "key": "KeyZ",
+    "keyText": "Z",
     "enable": true
   },
   {
@@ -36,15 +40,17 @@
     "src": "assets/audio/clHat.wav",
     "default_volume": "1",
     "type": "fader",
-    "key": "x",
+    "key": "KeyX",
+    "keyText": "X",
     "enable": true
   },
   {
     "name": "crash",
     "src": "assets/audio/allCrash.wav",
-    "default_volume": "0.4",
+    "default_volume": "0.3",
     "type": "fader",
-    "key": "m",
+    "key": "KeyM",
+    "keyText": "M",
     "enable": true
   },
   {
@@ -52,7 +58,8 @@
     "src": "assets/audio/HighTom.wav",
     "default_volume": "0.9",
     "type": "fader",
-    "key": "a",
+    "key": "KeyA",
+    "keyText": "A",
     "enable": true
   },
   {
@@ -60,7 +67,8 @@
     "src": "assets/audio/MediumTom.wav",
     "default_volume": "0.7",
     "type": "fader",
-    "key": "s",
+    "key": "KeyS",
+    "keyText": "S",
     "enable": true
   },
   {
@@ -68,7 +76,8 @@
     "src": "assets/audio/LowTom.wav",
     "default_volume": "0.75",
     "type": "fader",
-    "key": "d",
+    "key": "KeyD",
+    "keyText": "D",
     "enable": true
   }
 

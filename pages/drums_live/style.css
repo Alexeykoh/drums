@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header__wrapper {
+  user-select: none;
+  z-index: 1000;
+  font-family: "Prompt", sans-serif;
+  background-color: #C34A36;
+  width: 100%;
+}
+.header__wrapper a {
+  color: black;
+}
+.header__wrapper a:hover {
+  color: white;
+}
+.header__wrapper .header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  height: 60px;
+}
+.header__wrapper .header__inner .logo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+.header__wrapper .header__inner .logo .logo-title {
+  font-size: 3rem;
+  color: white;
+}
+.header__wrapper .header__inner .logo .logo-description {
+  font-size: 0.8rem;
+  color: #bebebe;
+}
+.header__wrapper .header__inner ul, .header__wrapper .header__inner .sub__menu {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  text-transform: uppercase;
+}
+.header__wrapper .header__inner ul .more-instr, .header__wrapper .header__inner .sub__menu .more-instr {
+  position: relative;
+}
+.header__wrapper .header__inner ul .more-instr .sub__menu-instruments, .header__wrapper .header__inner .sub__menu .more-instr .sub__menu-instruments {
+  display: none;
+}
+.header__wrapper .header__inner ul .more-instr .sub__menu-instruments.active, .header__wrapper .header__inner .sub__menu .more-instr .sub__menu-instruments.active {
+  width: 150px;
+  position: absolute;
+  left: -5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: start;
+  margin-top: 30px;
+  background-color: rgba(195, 74, 54, 0.39);
+}
+.header__wrapper .header__inner ul .more-instr .sub__menu-instruments.active li, .header__wrapper .header__inner .sub__menu .more-instr .sub__menu-instruments.active li {
+  margin: 5px;
+}
+.header__wrapper .header__inner ul li, .header__wrapper .header__inner .sub__menu li {
+  border-bottom: solid;
+}
+
+.main__wrapper .workstation__area {
+  user-select: none;
+  height: calc(100vh - 74px);
+  background-color: #cacaca;
+  display: flex;
+}
+.main__wrapper .workstation__area .mixer__block {
+  height: 100%;
+  background-color: #FBAB7E;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 15px;
+}
+.main__wrapper .workstation__area .mixer__block .fader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 280px;
+  height: 35px;
+  box-shadow: 7px 9px 1px #3c354a;
+  background-color: rgb(87, 83, 93);
+  margin: 0 10px;
+}
+.main__wrapper .workstation__area .mixer__block .fader:hover {
+  box-shadow: 10px 13px 3px #3c354a;
+  transform: scale(1.05) translateZ(0);
+  color: white;
+}
+.main__wrapper .workstation__area .mixer__block .fader .hotkey {
+  width: 50px;
+  text-align: center;
+}
+.main__wrapper .workstation__area .mixer__block .fader .name {
+  width: 80px;
+  text-align: center;
+}
+.main__wrapper .workstation__area .mixer__block .fader .volume {
+  width: 50px;
+  text-align: center;
+}
+.main__wrapper .workstation__area .mixer__block .fader#mstr-fader {
+  margin-top: 10px;
+  height: 55px;
+  width: 300px;
+  background-color: #C34A36;
+}
+.main__wrapper .workstation__area .mixer__block .fader .volume-range {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+.main__wrapper .workstation__area .mixer__block .fader .volume-range .slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+.main__wrapper .workstation__area .mixer__block .fader .volume-range .slider:hover {
+  opacity: 1;
+}
+.main__wrapper .workstation__area .mixer__block .fader .volume-range .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 5px;
+  height: 15px;
+  background: white;
+  cursor: pointer;
+}
+.main__wrapper .workstation__area .mixer__block .fader .volume-range .slider::-moz-range-thumb {
+  width: 5px;
+  height: 15px;
+  background: white;
+  cursor: pointer;
+}
+.main__wrapper .workstation__area .drums__block {
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  background-color: #3c354a;
+  position: relative;
+}
+.main__wrapper .workstation__area .drums__block .drums-logo {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 4rem;
+  color: black;
+  font-family: "Gloria Hallelujah", cursive;
+}
+.main__wrapper .workstation__area .drums__block img {
+  position: absolute;
+}
+.main__wrapper .workstation__area .drums__block img#carpet {
+  width: 100%;
+  top: 88%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
+.main__wrapper .workstation__area .drums__block img#kick {
+  width: 22%;
+  top: 88%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+}
+.main__wrapper .workstation__area .drums__block img#snare {
+  width: 11%;
+  top: 88%;
+  left: 40%;
+  transform: translate(-70%, -90%);
+}
+.main__wrapper .workstation__area .drums__block img#hh-close {
+  width: 14%;
+  top: 88%;
+  left: 36%;
+  transform: translate(-80%, -90%);
+}
+.main__wrapper .workstation__area .drums__block img#tom-up {
+  width: 9%;
+  top: 88%;
+  left: 50%;
+  transform: translate(-110%, -300%);
+}
+.main__wrapper .workstation__area .drums__block img#tom-mid {
+  width: 9%;
+  top: 88%;
+  left: 50%;
+  transform: translate(0%, -290%);
+}
+.main__wrapper .workstation__area .drums__block img#tom-floor {
+  width: 12%;
+  top: 88%;
+  left: 50%;
+  transform: translate(50%, -80%);
+}
+.main__wrapper .workstation__area .drums__block img#crash {
+  width: 18%;
+  top: 88%;
+  left: 50%;
+  transform: translate(50%, -95%);
+}
+
+/*# sourceMappingURL=style.css.map */

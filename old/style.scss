@@ -71,7 +71,7 @@ $mixer-height: 275px;
         left: -12%;
         bottom: 10%;
       }
-      &#hh{
+      &#hh-open{
         width: 30%;
         left: -37%;
         bottom: 5%;
@@ -132,7 +132,7 @@ $mixer-height: 275px;
   z-index: 1000;
   position: absolute;
   left: 0;
-  top: 65px;
+  top: calc(100vh - 75%);
   display: flex;
   //align-items: center;
   justify-content: center;
@@ -143,10 +143,6 @@ $mixer-height: 275px;
   gap: 10px;
   max-height: $mixer-height;
 }
-//#master__fader{
-//  height: 35px;
-//  margin-right: 10px;
-//}
 
 .fader{
   &:hover{
@@ -166,7 +162,7 @@ $mixer-height: 275px;
   gap: 10px;
 
   //width: 350px;
-  height: 25px;
+  height: 40px;
   background-color: rgb(87, 83, 93);
   color: black;
   font-weight: bold;
@@ -195,6 +191,10 @@ $mixer-height: 275px;
     justify-content: center;
     width: 25px;
     padding-right: 10px;
+    color: white;
+    &:hover{
+      color: #C34A36;
+    }
   }
 }
 
@@ -205,3 +205,4 @@ $mixer-height: 275px;
 .dr.active{
   transform: scale(1.05) translateZ(0);
 }
+
