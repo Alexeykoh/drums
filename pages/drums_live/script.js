@@ -87,17 +87,7 @@ setTimeout(() => {
 
 
 document.getElementById('snare').addEventListener('mousedown', function (event) {
-
-    soundData[1].onended = function () {
-        soundData[1].pause();
-        soundData[1].currentTime = 0;
-        console.log(soundData[1],' > pause');
-    }
-    soundData[1].currentTime = 0;
-    soundData[1].play()
-
+    let keks = document.getElementById('kek')
+    keks.currentTime = 0;
+    keks.play()
 })
-
-function kek() {
-    console.log('kek')
-}
