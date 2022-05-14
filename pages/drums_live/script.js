@@ -86,7 +86,7 @@ setTimeout(() => {
     }, 300)
 
 
-document.getElementById('snare').addEventListener('click', function (event) {
+document.getElementById('snare').addEventListener('mousedown', function (event) {
 
     soundData[1].onended = function () {
         soundData[1].pause();
