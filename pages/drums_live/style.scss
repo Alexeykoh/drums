@@ -1,0 +1,317 @@
+// === === === === === === === === === === === === === === //
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');//font-family: 'Source Code Pro', monospace;
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+//font-family: 'Prompt', sans-serif;
+//font-family: 'Gloria Hallelujah', cursive;
+
+// === === === === === === === === === === === === === === //
+// container
+.container{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+// === === === === === === === === === === === === === === //
+// separators
+
+
+// === === === === === === === === === === === === === === //
+// wrappers
+.header__wrapper{
+  //
+  z-index: 1000;
+  //
+  font-family: 'Prompt', sans-serif;
+  //
+  background-color: #C34A36;
+  //
+  width: 100%;
+  //
+  a{
+    color: black;
+    &:hover{
+      color: white;
+    }
+  }
+  //
+  .header__inner{
+    //
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    //
+    padding: 7px 0;
+    //
+    $header-heigh: 60px;
+    height: $header-heigh;
+    //
+    .logo{
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      //
+      align-items: center;
+      //
+      .logo-title{
+        font-size: 3rem;
+        //
+        color: white;
+      }
+      //
+      .logo-description{
+        font-size:  0.8rem;
+        //
+        color: #bebebe;
+      }
+    }
+    //
+    ul, .sub__menu{
+      .more-instr{
+        //
+        position: relative;
+        //
+        .sub__menu-instruments{
+          display: none;
+        }
+        .sub__menu-instruments.active{
+          width: 150px;
+          //
+          position: absolute;
+          left: -5px;
+          //
+          display: flex;
+          flex-direction: column;
+          //
+          gap: 15px;
+          //
+          align-items: start;
+          //
+          margin-top: 30px;
+          //
+          background-color: rgba(195, 74, 54, 0.39);
+          //
+          li{
+            margin: 5px;
+            //
+          }
+        }
+      }
+      //
+      li{
+        border-bottom: solid;
+        //
+      }
+      //
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      //
+      text-transform: uppercase;
+      //
+    }
+  }
+}
+//
+.main__wrapper{
+  //
+  .workstation__area{
+    height: calc(100vh - 74px);
+    //
+    background-color: #cacaca;
+    //
+    display: flex;
+    //
+    // MIXER
+    .mixer__block{
+      height: 100%;
+      //
+      background-color: #FBAB7E;
+      //
+      display: flex;
+      flex-direction: column;
+      //
+      align-items: end;
+      //
+      gap: 15px;
+      //
+      .fader{
+        //
+        &:hover{
+          box-shadow: 10px 13px 3px #3c354a;
+          transform: scale(1.05) translateZ(0);
+          color: white;
+        }
+        //
+        .hotkey{
+          width: 50px;
+          text-align: center;
+        }
+        .name{
+          width: 80px;
+          text-align: center;
+        }
+        .volume{
+          width: 50px;
+          text-align: center;
+        }
+        display: flex;
+        flex-direction: row;
+        //
+        align-items: center;
+        //justify-content: space-around;
+        //
+        width: 280px;
+        height: 35px;
+        //
+        box-shadow: 7px 9px 1px #3c354a;
+        background-color: rgb(87, 83, 93);
+        //
+        margin: 0 10px;
+        //
+        //
+        &#mstr-fader{
+          margin-top: 10px;
+          height: 55px;
+          width: 300px;
+          //
+          background-color: #C34A36;
+          //
+        }
+        .volume-range {
+          display: flex;
+          align-items: center;
+          //
+          width: 100px;
+          //
+          .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+          }
+          //
+          .slider:hover {
+            opacity: 1;
+          }
+          //
+          .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 5px;
+            height: 15px;
+            background: white;
+            cursor: pointer;
+          }
+          //
+          .slider::-moz-range-thumb {
+            width: 5px;
+            height: 15px;
+            background: white;
+            cursor: pointer;
+          }
+        }
+        //
+      }
+    }
+    //
+    // DRUMS
+    .drums__block{
+      .drums-logo{
+        position: absolute;
+        //
+        top: 10%;
+        left: 10%;
+        //
+        font-size: 4rem;
+        color: black;
+        font-family: 'Gloria Hallelujah', cursive;
+        //
+      }
+      //
+      width: 100%;
+      height: 100%;
+      //
+      background-color: #3c354a;
+      //
+      position: relative;
+      //
+      img{
+        //
+        position: absolute;
+        //
+        $top: 88%;
+        //
+        &#carpet{
+          width: 100%;
+          //
+          top:$top;
+          left:50%;
+          //
+          transform:translate(-50%, -40%);
+        }
+        &#kick{
+          width: 22%;
+          //
+          top:$top;
+          left:50%;
+          //
+          transform:translate(-50%, -90%);
+        }
+        &#snare{
+          width: 11%;
+          //
+          top:$top;
+          left:40%;
+          //
+          transform:translate(-70%, -90%);
+        }
+        &#hh-close{
+          width: 14%;
+          //
+          top:$top;
+          left:36%;
+          //
+          transform:translate(-80%, -90%);
+        }
+        &#tom-up{
+          width: 9%;
+          //
+          top:$top;
+          left:50%;
+          //
+          transform:translate(-110%, -300%);
+        }
+        &#tom-mid{
+          width: 9%;
+          //
+          top:$top;
+          left:50%;
+          //
+          transform:translate(0%, -290%);
+        }
+        &#tom-floor{
+          width: 12%;
+          //
+          top:$top;
+          left:50%;
+          //
+          transform:translate(50%, -80%);
+        }
+        &#crash{
+          width: 18%;
+          //
+          top:$top;
+          left:50%;
+          //
+          transform:translate(50%, -95%);
+        }
+      }
+    }
+  }
+}
