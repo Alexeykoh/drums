@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/*# sourceMappingURL=templates.css.map */
