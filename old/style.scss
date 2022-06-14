@@ -1,10 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 
+//
+
 *{
   margin: 0;
   padding: 0;
   font-family: 'Koulen', cursive;
 }
+
+// blocked
+.blocked{
+  display: none;
+}
+.blocked.active{
+  //
+  .blocked__bg{
+  //
+  }
+  .blocked__popup{
+    //
+    p{
+    color: #C34A36;
+    }
+  }
+}
+
+
+
 .container {
   user-select: none;
   max-width: 1280px;

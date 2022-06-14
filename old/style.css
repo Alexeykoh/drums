@@ -5,6 +5,14 @@
   font-family: "Koulen", cursive;
 }
 
+.blocked {
+  display: none;
+}
+
+.blocked.active .blocked__popup p {
+  color: #C34A36;
+}
+
 .container {
   user-select: none;
   max-width: 1280px;
