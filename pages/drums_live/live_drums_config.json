@@ -13,7 +13,7 @@
     "src": "../../assets/audio/Bass-Drum-1.wav",
     "default_volume": "0.7",
     "type": "fader",
-    "key": "space",
+    "key": "Space",
     "keyText": "space",
     "enable": true
   },

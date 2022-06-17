@@ -58,7 +58,7 @@ fetch (fetchURL)
 				const faderVol = document.createElement ("div");
 				faderVol.classList.add (`volume`);
 				faderVol.setAttribute ('id', `volume-fader-${key[i].name}`);
-				faderVol.innerHTML = `${key[i].default_volume}`
+				faderVol.innerHTML = `${(key[i].default_volume)*100}`
 				faderDiv.appendChild (faderVol);
 				//
 			}
@@ -66,13 +66,11 @@ fetch (fetchURL)
 	})
 
 // set faders volume
+let masterVolume = 100
 function drVol (thisIn) {
-	document.getElementById (`volume-${thisIn.id}`).innerHTML = thisIn.value;
-	// if (thisIn.id === 'fader-master'){
-	//     // console.log(thisIn.id )
-	//     masterVol = (1-thisIn.value).toFixed(2)
-	//     document.title = `LiDrums (mstr:${thisIn.value})`;
-	// }
+	document.getElementById (`volume-${thisIn.id}`).innerHTML = (thisIn.value * 100).toFixed();
+	masterVolume = 1*((document.getElementById(`volume-fader-master`).innerHTML))
+	// console.log(masterVolume)
 }
 
 // loading sounds
@@ -96,13 +94,33 @@ document.querySelectorAll ('.dr').forEach (function (elements) {
 	elements.onclick = function (event) {
 		jsonData.forEach ((data) => {
 			if (data.name === this.id) {
-				createjs.Sound.on ("fileload", handleLoadComplete);
-				createjs.Sound.play (`play-${this.id}`);
+				play(this.id)
 			}
 		})
 	}
 })
 
-function handleLoadComplete () {
-	console.log ('load complete')
+function play(id){
+	console.log (id)
+	let currentVolume = document.getElementById(`volume-fader-${id}`).innerHTML
+	let commonVol = (((currentVolume/100)*masterVolume).toFixed())/100
+	//
+	// console.log ('play:',data.name,' [vol:', currentVolume,'] Common: ',commonVol,'master:',masterVolume)
+	//
+	createjs.Sound.on ("fileload", handleLoadComplete);
+	createjs.Sound.play (`play-${id}`);
+	createjs.Sound.volume = commonVol;
 }
+
+function handleLoadComplete () {
+	console.log ('sound load complete')
+}
+
+document.addEventListener('keydown', (event) => {
+	//
+	jsonData.forEach((data) => {
+		if (data.key === event.code){
+			play(data.name)
+		}
+	})
+})
